@@ -4,10 +4,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
 {
     internal class Program
     {
-        static int DemanderNombre()
+        static int DemanderNombre(int min, int max)
         {
             int nombre_num = 0;
-            while (nombre_num == 0)
+            while ((nombre_num < min) || (nombre_num > max))
             {
                 Console.Write("entrez un nombre: ");
                 string nombre_str = Console.ReadLine();
@@ -15,6 +15,11 @@ namespace MyApp // Note: actual namespace depends on the project name.
                 try
                 {
                     nombre_num = int.Parse(nombre_str);
+                    
+                    if((nombre_num < min) || (nombre_num > max))
+                    {
+                        Console.WriteLine("Erreur: Veillez entrez un nombre compris entre " + min + " et " + max);
+                    }
                 }
                 catch
                 {
@@ -26,7 +31,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
 
         static void Main(string[] args)
         {
-            int nombre = DemanderNombre();
+            const int min = 1;
+            const int max = 10;
+
+            int nombre = DemanderNombre(min, max);
             Console.WriteLine("votre nombre est: " + nombre);
         }
     }
