@@ -33,7 +33,10 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
             const int min = 1;
             const int max = 10;
-            const int nombreMagique = 5;
+
+            Random rand = new Random();
+            int nombreMagique = rand.Next(1, 11);
+
             int nombre = 0;
 
             while (nombre != nombreMagique)
