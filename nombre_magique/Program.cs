@@ -33,9 +33,22 @@ namespace MyApp // Note: actual namespace depends on the project name.
         {
             const int min = 1;
             const int max = 10;
+            const int nombreMagique = 5;
+            int nombre = 0;
 
-            int nombre = DemanderNombre(min, max);
-            Console.WriteLine("votre nombre est: " + nombre);
+            while (nombre != nombreMagique)
+            {
+                nombre = DemanderNombre(min, max); 
+                if (nombre < nombreMagique)
+                {
+                    Console.WriteLine("Le nombre magique est plus grand");
+                }
+                else if (nombre > nombreMagique)
+                {
+                    Console.WriteLine("Le nombre magique est plus petit");
+                }
+                Console.WriteLine("Bravo, vous avez trouvé le nombre magique");
+            }
         }
     }
 }
