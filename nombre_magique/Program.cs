@@ -35,22 +35,38 @@ namespace MyApp // Note: actual namespace depends on the project name.
             const int max = 10;
 
             Random rand = new Random();
-            int nombreMagique = rand.Next(1, 11);
+            int nombreMagique = rand.Next(min, max+1);
 
             int nombre = 0;
+            int nbVies = 4;
 
-            while (nombre != nombreMagique)
+            while ((nombre != nombreMagique) && (nbVies > 0))
             {
+                Console.WriteLine();
+                Console.WriteLine("Vie(s) restante : " + nbVies);
                 nombre = DemanderNombre(min, max); 
                 if (nombre < nombreMagique)
                 {
                     Console.WriteLine("Le nombre magique est plus grand");
+                    nbVies--;
                 }
                 else if (nombre > nombreMagique)
                 {
                     Console.WriteLine("Le nombre magique est plus petit");
+                    nbVies--;
                 }
+                else
+                {
+                    break;
+                }
+            }
+            if (nombre == nombreMagique) 
+            {
                 Console.WriteLine("Bravo, vous avez trouvé le nombre magique");
+            }
+            else
+            {
+                Console.WriteLine("Vous avez perdu, le nombre magique était: " + nombreMagique);
             }
         }
     }
